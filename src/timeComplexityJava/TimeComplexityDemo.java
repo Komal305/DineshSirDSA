@@ -1,28 +1,32 @@
 package timeComplexityJava;
 
-import java.util.Scanner;
 
 public class TimeComplexityDemo {
 public static void main(String[] args) {
-	long now=System.currentTimeMillis();
+	double now=System.currentTimeMillis();
 
 	int n=99999999;
-	TimeComplexityDemo t=new TimeComplexityDemo();
 	findSum(n);
 	System.out.println("current time :"+ (System.currentTimeMillis()-now));
 	
 }
 	
-//public int findSum(int n) {
-//	return n*(n+1)/2;
+//public static void findSum(long n) {
+//	System.out.println(n*(n+1)/2);
+////	4999999950000000
+//	//current time :1.0
 //}
 
-public static void findSum(int n) {
-	int sum=0;
-	for (int i = 0; i < n; i++) {
+public static void findSum(long n) {
+	long sum=0;
+	for (long i = 1; i <=n; i++) {
 		sum +=i;
 	}
 	System.out.println(sum);
+	
+//	4999999950000000
+	//current time :33.0
+
 }
 
 
