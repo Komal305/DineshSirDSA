@@ -10,10 +10,10 @@ public class SecondMaxArray {
 	public static void maximumNum(int[] a) {
 		int max1st=Integer.MIN_VALUE;
 		int max2nd=Integer.MIN_VALUE;
-		System.out.println(max2nd);
+		
 		for(int i=0;i<a.length;i++) {
 			if(a[i]>max1st) {
-				max2nd=max1st;
+				//max2nd=max1st;
 				max1st=a[i];
 			}else if(a[i]>max2nd && a[i]!=max1st )
 				max2nd=a[i];

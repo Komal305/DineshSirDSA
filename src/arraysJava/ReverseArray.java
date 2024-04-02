@@ -6,6 +6,10 @@ public static void main(String[] args) {
 	reverse(a, 0, a.length-1);
 	
 }
+
+public void shiftKTime() {
+	
+}
 public static void reverse(int[] a,int start,int end) {
 	while(start<end) {
 		int temp=a[start];
@@ -13,11 +17,11 @@ public static void reverse(int[] a,int start,int end) {
 		a[end--]=temp;
 	}
 	
-//	for(int i=start;i<end;i++) {
-//		int t=a[start];
-//		a[start++]=a[end];
-//		a[end--]=t;
-//	}
+	for(int i=start;i<end;i++) {//more time here
+		int t=a[start];
+		a[start++]=a[end];
+		a[end--]=t;
+	}
 	for(int f:a) System.out.print(f+" ");
 }
 }
