@@ -2,28 +2,23 @@ package arraysJava;
 
 public class max {
 public static void main(String[] args) {
-	int[] a= {7};
-	int n=a.length-1;
-	int c=0;
-	//int j=0;
-	if(a.length==0)
-	for(int i=n;i>=0;i--) {
-		if(a[i]!=a[n-1]) {
-			c++;
-			
-		}
-		
-	}
-	System.out.println(c);
+//	int[] a= {1, 2, 3, 4, 5};
+//	int B=4;
+	//String[] a = {"abcdefgh", "aefghijk", "abcefgh"};
+	String a="ABCD";
+	max m=new max();
+	m.solve(a);
+    }
+public int solve(String A) {
+	int count=0;
+for(int i=0; i<A.length(); i++){
+   char c=A.toLowerCase().charAt(i);
+   //char[] v={a,e,i,o,u,A,E,I,O,U};
+       if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'){
+           A.substring(i, A.length()-1);
+           count++;
+       }
 }
-
-//public int[] solve(int[] A, int B) {
-//
-//    for(int k=0;k<B;k++){}
-//    int temp=A[A.length-1];
-//    for(int i=A.length-1; i<=0; i--){
-//     A[i-1]=A[i];
-//
-//    }
-//}
+return 1;
+    }
 }

@@ -14,17 +14,18 @@ private static class ListNode{
 }
 public static void main(String[] args) {
 	SinglyLinkedList n1=new SinglyLinkedList();
-	n1.head=new ListNode(30);
-	ListNode n2=new ListNode(4);
-	ListNode n3=new ListNode(23);
-	ListNode n4=new ListNode(27);
+	n1.head=new ListNode(1);
+	ListNode n2=new ListNode(2);
+	ListNode n3=new ListNode(3);
+	ListNode n4=new ListNode(4);
+	ListNode n5=new ListNode(5);
 	
 	//connecting them together to form a chain
 	n1.head.next=n2; //30>-4>-null
 	n2.next=n3;//30>-4>-23>-null
 	n3.next=n4;//30>-4>-23>-27>-null
-	
- n1.print();
+	n4.next=n5;
+ n1.print(n1.head);
 //	n1.length();
 //	n1.insertHead(9);
 //	n1.length();
@@ -34,12 +35,19 @@ public static void main(String[] args) {
 	//System.out.println(n1.deleteFirst().data);
 	//System.out.println(n1.deleteLast().data);
 //l1.deleteNode(2);
- n1.searchElement(30);
- System.out.println(n1.searchElement(3));
-	n1.print();
+// System.out.println(n1.searchElement(3));
+// ListNode rev=n1.reverse(n1.head);
+ 
+ //ListNode rev=n1.reverseBetween(n1.head, 2, 4);
+ 
+// ListNode mid=n1.middleNode();
+// System.out.println(mid.data);
+	//n1.print(mid);
+ ListNode nth=n1.nthEndNode(6);
+ System.out.println(nth.data);
 }
 // ====================================================print================================================================
-public void print(){
+public void print(ListNode head){
 	ListNode current=head;
 	while(current!=null) {
 		System.out.print(current.data+">-");
@@ -152,4 +160,71 @@ public boolean searchElement(int key) {
 	return false;
 }
 
+//====================================================reverse================================================================
+public ListNode reverse(ListNode head) {
+	if(head==null) return head;
+	
+    ListNode current=head;
+    ListNode previous=null;
+    ListNode next=null;
+    while(current!=null){
+        next=current.next;
+        current.next=previous; 
+        previous=current;
+        current=next;
+    }
+    return previous;
 }
+
+public ListNode reverseBetween(ListNode head, int left, int right) {
+	if(head==null) return head;
+	
+    ListNode current=head.next;
+    ListNode previous=null;
+    ListNode next=null;
+    while(left<=right){
+        next=current.next;
+        current.next=previous; 
+        previous=current;
+        current=next;
+    }
+    return previous;
+}
+//====================================================middle node================================================================
+public ListNode middleNode() {
+	
+	ListNode slowPtr=head;
+	ListNode fastPtr=head;
+	while(fastPtr!=null && fastPtr.next!=null) {
+		slowPtr=slowPtr.next;
+		fastPtr=fastPtr.next.next;
+		
+	}	
+	return slowPtr;
+}
+//====================================================nth node================================================================
+public ListNode nthEndNode(int n) {
+	if(head==null)return null;
+
+	if(n<=0) throw new IllegalArgumentException(n+" invalid number ");
+	
+	int count=0;
+	ListNode ref=head;
+	ListNode main=head;
+	while(count<n) {
+		if(ref==null) throw new IllegalArgumentException(n+" is grater than the number of node ");
+		ref=ref.next;
+		count++;
+	}
+	while(ref!=null) {
+		ref=ref.next;
+		main=main.next;
+	}
+	
+	return main;
+
+}
+}
+
+
+
