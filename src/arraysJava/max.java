@@ -2,23 +2,22 @@ package arraysJava;
 
 public class max {
 public static void main(String[] args) {
-//	int[] a= {1, 2, 3, 4, 5};
-//	int B=4;
-	//String[] a = {"abcdefgh", "aefghijk", "abcefgh"};
-	String a="ABCD";
-	max m=new max();
-	m.solve(a);
-    }
-public int solve(String A) {
-	int count=0;
-for(int i=0; i<A.length(); i++){
-   char c=A.toLowerCase().charAt(i);
-   //char[] v={a,e,i,o,u,A,E,I,O,U};
-       if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'){
-           A.substring(i, A.length()-1);
-           count++;
-       }
+	int[] A={1,2,2,3,1};
+	 int r=-71;
+	 System.out.println(pow(r));
+//     for(int i=0; i<A.length; i++){
+//       
+//         System.out.print(r+" "+A[i]+" =");
+//         r = r^A[i];
+//         System.out.println( r);
+//         } 
 }
-return 1;
-    }
+
+public static int pow(int n) {
+	if(n<=1) { return n;}
+	
+	
+	return pow(n-1)+pow(n-2);
+	
+}
 }
