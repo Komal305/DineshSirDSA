@@ -3,29 +3,55 @@ package javaLinkedList;
 public class SinglyLinkedList {
 private ListNode head;
 
-private static class ListNode{
-	private int data;
-	private ListNode next;
+public static class ListNode{
+	public int data;
+	public ListNode next;
 	
-	private ListNode(int data) {
+	public ListNode(int data) {
 		this.data=data;
 		this.next=null;
 	}
 }
 public static void main(String[] args) {
 	SinglyLinkedList n1=new SinglyLinkedList();
-//	n1.head=new ListNode(1);
-//	ListNode n2=new ListNode(2);
-//	ListNode n3=new ListNode(3);
-//	ListNode n4=new ListNode(5);
-//	ListNode n5=new ListNode(6);
-//	
-//	//connecting them together to form a chain
-//	n1.head.next=n2; //30>-4>-null
-//	n2.next=n3;//30>-4>-23>-null
-//	n3.next=n4;//30>-4>-23>-27>-null
-//	n4.next=n5;
-//	n1.print();
+	n1.head=new ListNode(1);
+	ListNode n2=new ListNode(3);
+	ListNode n3=new ListNode(5);
+	ListNode n4=new ListNode(7);
+	ListNode n5=new ListNode(9);
+	
+	n1.head.next=n2; 
+	n2.next=n3;
+	n3.next=n4;
+	n4.next=n5;
+	
+	ListNode a1=new ListNode(1);
+	ListNode a2=new ListNode(3);
+	ListNode a3=new ListNode(5);
+	ListNode a4=new ListNode(7);
+	ListNode a5=new ListNode(9);
+	
+	a1.next=a2; 
+	a2.next=a3;
+	a3.next=a4;
+	a4.next=a5;
+	
+	ListNode b1=new ListNode(1);
+	ListNode b2=new ListNode(4);
+	ListNode b3=new ListNode(5);
+	ListNode b4=new ListNode(8);
+	ListNode b5=new ListNode(10);
+	
+	b1.next=b2;
+	b2.next=b3;
+	b3.next=b4;
+	b4.next=b5;
+	
+	ListNode m = n1.mergeList(b1, a1);
+	while(m!=null) {
+		System.out.print(m.data+"->");
+		m=m.next;
+	}
  //n1.printHead();
 //	n1.length();
 //	n1.insertHead(9);
@@ -48,11 +74,11 @@ public static void main(String[] args) {
 //n1.removeDuplicate();
 //n1.insertNodeInSorted(4);
 //n1.deleteKey(5);
-	n1.createLoopInLinkedList();
-	System.out.println(n1.CheckLoop());
-	//System.out.println(n1.StartNodeOfLoop().data);
-	n1.removeLoop();
-	System.out.println(n1.CheckLoop());
+//n1.createLoopInLinkedList();
+//System.out.println(n1.CheckLoop());
+//System.out.println(n1.StartNodeOfLoop().data);
+//n1.removeLoop();
+//System.out.println(n1.CheckLoop());
 //n1.print();
 }
 // ====================================================print================================================================
@@ -360,5 +386,32 @@ public void remove(ListNode slowptr) {
 		slowptr=slowptr.next;
 	}
 	slowptr.next=null;
+}
+
+public ListNode mergeList(ListNode a,ListNode b){
+	if(a==null) return b; if(b==null) return a;
+	
+	ListNode dummy=new ListNode(0);
+	ListNode tail=dummy;
+	
+	while(a.next!=null && b.next!=null) {
+		if(a.data<b.data) {
+			tail.next=a;
+			a=a.next;
+		}
+		else {
+			tail.next=b;
+			b=b.next;
+		}
+		tail=tail.next;
+	}
+	if(a==null) 
+		tail.next=b;
+	else 
+		tail.next=a;
+	
+	
+	return dummy.next;
+	
 }
 }

@@ -7,8 +7,14 @@ private int length;
 public static void main(String[] args) {
 	DoublyLinkedListImpl d=new DoublyLinkedListImpl();
 	d.insertLast(5);
+	d.insertLast(55);
 	
 	d.insertFirst(1);
+	d.insertFirst(11);
+	d.insertFirst(111);
+	
+	//d.printDoublyF();
+	//d.printDoublyB();
 }
 private void insertLast(int value) {
 	ListNode newNode= new ListNode(value);
@@ -61,10 +67,10 @@ public void printDoublyF() {
 	if(head==null)return;
 	ListNode temp=head;
 	while(temp!=null) {
-		System.out.println(temp.data+"->");
+		System.out.print(temp.data+"->");
 		temp=temp.next;
 	}
-	System.out.println("null");
+	System.out.print("null");
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~backward direction~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,9 +78,9 @@ public void printDoublyB() {
 	if(tail==null)return;
 	ListNode temp=tail;
 	while(temp!=null) {
-		System.out.println(temp.data+"->");
+		System.out.print(temp.data+"->");
 		temp=temp.previous;
 	}
-	System.out.println("null");
+	System.out.print("null");
 }
 }
