@@ -1,5 +1,7 @@
 package javaLinkedList;
 
+import java.util.NoSuchElementException;
+
 public class DoublyLinkedListImpl {
 private ListNode head;
 private ListNode tail;
@@ -13,8 +15,16 @@ public static void main(String[] args) {
 	d.insertFirst(11);
 	d.insertFirst(111);
 	
-	//d.printDoublyF();
+	
+	//d.deleteFirstNode();
+	d.printDoublyF();
+	System.out.println();
 	//d.printDoublyB();
+	
+	
+	System.out.println(d.deleteFirstNode().data);
+	System.out.println(d.deleteLastNode().data);
+	
 }
 private void insertLast(int value) {
 	ListNode newNode= new ListNode(value);
@@ -78,9 +88,37 @@ public void printDoublyB() {
 	if(tail==null)return;
 	ListNode temp=tail;
 	while(temp!=null) {
-		System.out.print(temp.data+"->");
+		System.out.print(temp.data+"<-");
 		temp=temp.previous;
 	}
 	System.out.print("null");
 }
+//~~~~~~~~~~~~~~~~~~~~~~delete first node~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public ListNode deleteFirstNode() {
+	if(isEmpty()) throw new NoSuchElementException();
+	ListNode temp=head;
+	if(head==tail) {
+		tail=null;
+	}else {
+		head.next.previous=null;
+	}
+	head=head.next;
+	temp.next=null;
+	return temp;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~delete last node~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public ListNode deleteLastNode() {
+	if(isEmpty()) throw new NoSuchElementException();
+	ListNode temp=tail;
+	if(head==tail) {
+		tail=null;
+	}else {
+		tail.previous.next=null;
+	}
+	tail=tail.previous;
+	temp.previous=null;
+	return temp;
+}
+
 }
