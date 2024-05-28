@@ -1,12 +1,14 @@
 package TapAcedmy.BitManipulation;
 
 public class solve {
-
+static int k;
 	public static void main(String[] args) {
-		pow(2, 2, 3);
+		//pow(2, 2, 3);
 		//System.out.println();
 	}
-	public static void pow(int x, int n, int d) {
+	public  void pow(int x, int n, int d) {
+		solve.k=9;
+		k=9;
 	    long a = x;
 	    long res = 1L;
 	    while (n > 0) {
